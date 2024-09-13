@@ -17,12 +17,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'email', 'password', 'role', 'avatar'];
+    protected $fillable = ['name', 'email', 'password', 'role'];
 
-    // Relasi User bisa memiliki banyak transaksi
-    public function transactions()
+    public function salesTransactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(SalesTransaction::class);
+    }
+
+    public function purchaseTransactions()
+    {
+        return $this->hasMany(PurchaseTransaction::class);
     }
 
     /**

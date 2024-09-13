@@ -9,18 +9,25 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'category_id', 'price', 'stock', 'description', 'image'];
+    protected $fillable = ['category_id', 'supplier_id', 'name', 'price', 'stock'];
 
-    // Relasi ke Category
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // Relasi Product bisa muncul di banyak detail transaksi
-    public function transactionDetails()
+    public function supplier()
     {
-        return $this->hasMany(TransactionDetail::class);
+        return $this->belongsTo(Supplier::class);
     }
 
+    public function salesTransactionDetails()
+    {
+        return $this->hasMany(SalesTransactionDetail::class);
+    }
+
+    public function purchaseTransactionDetails()
+    {
+        return $this->hasMany(PurchaseTransactionDetail::class);
+    }
 }

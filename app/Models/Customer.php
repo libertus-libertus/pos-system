@@ -9,11 +9,10 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'phone', 'address'];
+    protected $fillable = ['name', 'phone', 'address'];
 
-    // Relasi Customer bisa memiliki banyak transaksi
-    public function transactions()
+    public function salesTransactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(SalesTransaction::class);
     }
 }

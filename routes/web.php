@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+
+// Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::resource('category', App\Http\Controllers\CategoryController::class);
+Route::resource('supplier', App\Http\Controllers\SupplierController::class);
+Route::resource('customer', App\Http\Controllers\CustomerController::class);
+Route::resource('product', App\Http\Controllers\ProductController::class);

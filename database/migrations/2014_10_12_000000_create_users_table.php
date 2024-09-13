@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['super admin', 'cashier']);
-            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
