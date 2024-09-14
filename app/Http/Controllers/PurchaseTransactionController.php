@@ -86,7 +86,7 @@ class PurchaseTransactionController extends Controller
         $suppliers = Supplier::all();
         $products = Product::all();
 
-        return view('purchase.edit', compact('transaction', 'suppliers', 'products'));
+        return view('pages.purchase.edit', compact('transaction', 'suppliers', 'products'));
     }
 
     public function update(Request $request, $id)
@@ -139,7 +139,7 @@ class PurchaseTransactionController extends Controller
         // Update total harga transaksi
         $transaction->update(['total_price' => $total_price]);
 
-        return redirect()->route('pages.purchase.index')->with('success', 'Transaksi berhasil diperbarui.');
+        return redirect()->route('purchase.index')->with('success', 'Transaksi berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -153,6 +153,6 @@ class PurchaseTransactionController extends Controller
         }
         $transaction->delete();
 
-        return redirect()->route('pages.purchase.index')->with('success', 'Transaksi berhasil dihapus.');
+        return redirect()->route('purchase.index')->with('success', 'Transaksi berhasil dihapus.');
     }
 }
