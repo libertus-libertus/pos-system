@@ -41,8 +41,14 @@
             </div>
 
             <div class="box-body">
-              <button type="submit" class="btn btn-primary btn-xs btn-flat">Simpan Pelanggan</button>
-              <a href="{{ route('customer.index') }}" class="btn btn-warning btn-xs btn-flat">Kembali</a>
+              <button type="submit" class="btn btn-primary btn-xs btn-flat">
+                <i class="fa fa-save"></i>
+                Simpan Pelanggan
+              </button>
+              <a href="{{ route('customer.index') }}" class="btn btn-warning btn-xs btn-flat">
+                <i class="fa fa-refresh"></i>
+                Kembali
+              </a>
             </div>
           </form>
         </div>

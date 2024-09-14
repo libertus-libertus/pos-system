@@ -13,77 +13,60 @@
         <div class="box">
           <!-- /.box-header -->
           <div class="box-body">
-            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length"
-                        aria-controls="example1" class="form-control input-sm">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                      </select> entries</label></div>
-                </div>
-                <div class="col-sm-6">
-                  <div id="example1_filter" class="dataTables_filter">
-                    <a href="{{ route('product.create') }}" class="btn btn-primary btn-xs btn-flat">
-                      <i class="fa fa-plus-circle"> Tambah Produk</i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
-                    aria-describedby="example1_info">
-                    <thead>
-                      <tr>
-                        <th style="width: 10%">No</th>
-                        <th>Kategori</th>
-                        <th>Supplier</th>
-                        <th>Nama Produk</th>
-                        <th>Harga</th>
-                        <th class="text-center">Stok</th>
-                        <th class="text-center">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @forelse ($products as $item)
-                        <tr class="even">
-                          <td>{{ $loop->iteration }}</td>
-                          <td>{{ $item->category->name }}</td>
-                          <td>{{ $item->supplier->name }}</td>
-                          <td>{{ $item->name }}</td>
-                          <td class="text-right">Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
-                          <td class="text-center">{{ $item->stock }}</td>
-                          <td class="text-center">
-                            <form class="btn-group" onsubmit="return confirm('Apakah Anda Yakin ?');"
-                              action="{{ route('product.destroy', $item->id) }}" method="post">
-                              <a href="{{ route('product.edit', $item->id) }}" class="btn btn-sm btn-primary">
-                                <i class="fa fa-edit"></i>
-                                Ubah
-                              </a>
-                              @csrf
-                              @method('delete')
-                              <button type="submit" class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash"></i>
-                                Hapus
-                              </button>
-                            </form>
-                          </td>
-                        </tr>
-                      @empty
-                        <tr class="even">
-                          <td colspan="5" class="text-center">
-                            Belum ada data
-                          </td>
-                        </tr>
-                      @endforelse
-                    </tbody>
-                  </table>
-                </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <a href="{{ route('product.create') }}" class="btn btn-primary btn-xs btn-flat">
+                  <i class="fa fa-plus-circle"> Tambah Produk</i>
+                </a>
               </div>
             </div>
+            <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+              aria-describedby="example1_info">
+              <thead>
+                <tr>
+                  <th style="width: 10%">No</th>
+                  <th>Kategori</th>
+                  <th>Supplier</th>
+                  <th>Nama Produk</th>
+                  <th>Harga</th>
+                  <th class="text-center">Stok</th>
+                  <th class="text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                @forelse ($products as $item)
+                  <tr class="even">
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->category->name }}</td>
+                    <td>{{ $item->supplier->name }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td class="text-right">Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
+                    <td class="text-center">{{ $item->stock }}</td>
+                    <td class="text-center">
+                      <form class="btn-group" onsubmit="return confirm('Apakah Anda Yakin ?');"
+                        action="{{ route('product.destroy', $item->id) }}" method="post">
+                        <a href="{{ route('product.edit', $item->id) }}" class="btn btn-sm btn-primary btn-xs btn-flat">
+                          <i class="fa fa-edit"></i>
+                          Ubah
+                        </a>
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-sm btn-danger btn-xs btn-flat">
+                          <i class="fa fa-trash"></i>
+                          Hapus
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                @empty
+                  <tr class="even">
+                    <td colspan="5" class="text-center">
+                      Belum ada data
+                    </td>
+                  </tr>
+                @endforelse
+              </tbody>
+            </table>
           </div>
           <!-- /.box-body -->
         </div>
@@ -100,16 +83,14 @@
   <script src="{{ asset('backend/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <script>
-        //message with toastr
-        @if(session()->has('success'))
+  <script>
+    //message with toastr
+    @if (session()->has('success'))
 
-            toastr.success('{{ session('success') }}', 'BERHASIL!');
+      toastr.success('{{ session('success') }}', 'BERHASIL!');
+    @elseif (session()->has('error'))
 
-        @elseif(session()->has('error'))
-
-            toastr.error('{{ session('error') }}', 'GAGAL!');
-
-        @endif
-    </script>
+      toastr.error('{{ session('error') }}', 'GAGAL!');
+    @endif
+  </script>
 @endsection
