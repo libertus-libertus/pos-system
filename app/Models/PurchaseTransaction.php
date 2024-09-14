@@ -23,6 +23,6 @@ class PurchaseTransaction extends Model
 
     public function purchaseTransactionDetails()
     {
-        return $this->hasMany(PurchaseTransactionDetail::class);
+        return $this->hasMany(PurchaseTransactionDetail::class, 'transaction_id');
     }
 }

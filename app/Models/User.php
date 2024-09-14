@@ -48,4 +48,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Fungsi untuk memeriksa apakah user adalah admin
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    // Fungsi untuk memeriksa apakah user adalah cashier
+    public function isCashier()
+    {
+        return $this->role === 'cashier';
+    }
 }

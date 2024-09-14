@@ -13,7 +13,7 @@ class PurchaseTransactionDetail extends Model
 
     public function purchaseTransaction()
     {
-        return $this->belongsTo(PurchaseTransaction::class);
+        return $this->belongsTo(PurchaseTransaction::class, 'transaction_id');
     }
 
     public function product()

@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $total_products = Product::count();
-        return view('dashboard', compact('total_products'));
+        // $total_products = Product::count();
+        return view('dashboard');
     }
 }

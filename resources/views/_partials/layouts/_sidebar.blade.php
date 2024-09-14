@@ -55,7 +55,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Sales</a></li>
-          <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Stock In / Purchases</a></li>
+          <li><a href="{{ url('/purchase') }}"><i class="fa fa-circle-o"></i> Stock In / Purchases</a></li>
         </ul>
       </li>
       <li class="header">REPORTS</li>
